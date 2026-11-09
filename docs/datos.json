@@ -6,6 +6,10 @@
   },
   "novedades": [
     {
+      "fecha": "2026-11-06",
+      "texto": "Hicimos la reunión de arranque. Ya está la tarea de la semana 1 y el plan para tener la primera versión en la segunda semana de diciembre."
+    },
+    {
       "fecha": "2026-10-31",
       "texto": "Arranca el proyecto. Está abierta la tarea de arranque y el When2meet para escoger el horario de la primera reunión."
     }
@@ -15,7 +19,7 @@
       "numero": 0,
       "titulo": "Arranque",
       "fechas": "3 al 6 de noviembre",
-      "estado": "actual",
+      "estado": "hecha",
       "objetivo": "Conocernos, entender qué es un RAG y definir el alcance de la primera versión.",
       "tareas": [
         "Marcar disponibilidad en el When2meet (1 min), hasta el lunes 2 de noviembre a las 8 p. m.",
@@ -33,10 +37,70 @@
     },
     {
       "numero": 1,
-      "titulo": "Por definir en la reunión de arranque",
-      "fechas": null,
+      "titulo": "Normas y conjunto de prueba",
+      "fechas": "6 al 13 de noviembre",
+      "estado": "actual",
+      "objetivo": "Tener los textos de las normas y las respuestas verificadas con las que vamos a calificar al RAG.",
+      "tareas": [
+        "Todos, hasta el miércoles 11: responder 2 preguntas con su norma, artículo y fragmento literal, y guardar el texto de esas normas.",
+        "Tu frente, hasta el viernes 13 antes de la reunión: mapa y vigencia, extracción de artículos, Estatuto Estudiantil y normas faltantes o cómo vamos a calificar."
+      ],
+      "materiales": [
+        {
+          "titulo": "Guía completa de la semana 1",
+          "url": "https://github.com/Mr-Percival/rag-legal-unal/blob/main/tareas/semana-1.md"
+        },
+        {
+          "titulo": "Preguntas del proyecto",
+          "url": "https://github.com/Mr-Percival/rag-legal-unal/issues?q=is%3Aissue+label%3Apregunta"
+        },
+        {
+          "titulo": "Régimen Legal de la UNAL",
+          "url": "https://legal.unal.edu.co/rlunal/home/"
+        }
+      ],
+      "grabacion": null,
+      "acta": null
+    },
+    {
+      "numero": 2,
+      "titulo": "Normas limpias y partidas",
+      "fechas": "14 al 20 de noviembre",
       "estado": "proxima",
-      "objetivo": null,
+      "objetivo": "Dejar las normas limpias y partidas por artículo y parágrafo, sin perder de dónde salió cada pedazo.",
+      "tareas": [],
+      "materiales": [],
+      "grabacion": null,
+      "acta": null
+    },
+    {
+      "numero": 3,
+      "titulo": "Búsqueda",
+      "fechas": "21 al 27 de noviembre",
+      "estado": "proxima",
+      "objetivo": "Encontrar el artículo correcto para cada pregunta y medirlo con el conjunto de prueba.",
+      "tareas": [],
+      "materiales": [],
+      "grabacion": null,
+      "acta": null
+    },
+    {
+      "numero": 4,
+      "titulo": "Respuestas con cita",
+      "fechas": "28 de noviembre al 4 de diciembre",
+      "estado": "proxima",
+      "objetivo": "Conectar el modelo para que responda citando la norma exacta y diga cuándo no encontró sustento.",
+      "tareas": [],
+      "materiales": [],
+      "grabacion": null,
+      "acta": null
+    },
+    {
+      "numero": 5,
+      "titulo": "Interfaz y demo",
+      "fechas": "5 al 13 de diciembre",
+      "estado": "proxima",
+      "objetivo": "Tener una interfaz simple, los últimos ajustes y la demo de la primera versión.",
       "tareas": [],
       "materiales": [],
       "grabacion": null,

@@ -49,3 +49,14 @@
   - El video de IBM sale de los niveles opcionales.
   - Ajustes en celular: terminal, sello, novedades y rombos de las semanas. Se agregó un favicon.
 - **Fechas límite (las aprobó Nicolás):** el When2meet hasta el lunes 2 de noviembre a las 8 p. m. y la pregunta antes de la reunión. La dedicación semanal no se pone, porque el grupo ya se comprometió.
+
+## 2026-11-09 · Reunión de arranque, semana 1 y plan general
+
+- **Acordado en la reunión del 6-11:** reunión todos los viernes a las 8 p. m.; la semana 1 es para armar la base de normas y el conjunto de prueba; desde el 13-11 se trabaja en todo lo demás; primera versión en la segunda semana de diciembre.
+- **Alcance de la primera versión (lo decidió Nicolás):** pregrado, normas del Régimen Legal y calendario académico de la sede Medellín, porque varios plazos dependen de él. Las guías y copias de facultad solo sirven de pista.
+- **Frentes:** los asigna Nicolás y rotan cada semana, para que todos pasen por datos, búsqueda, modelo y evaluación. Cada semana hay además una parte corta que hacen los cinco.
+- **Tareas independientes:** cada persona recorre el camino completo (pregunta, norma y texto guardado) y los frentes se diseñan para que nadie espere a otro. Parte 1 el miércoles y parte 2 el viernes.
+- **Un archivo por norma** en `datos/normas/`, con ficha (norma, órgano, enlace, vigencia, normas que la modifican y normas relacionadas). Evita conflictos de Git y permite subir desde la web de GitHub.
+- **La vigencia no es de sí o no:** la ficha admite «parcial» y separa las normas que modifican de las que reglamentan, delegan o exceptúan.
+- **Pistas por pregunta para todos** (`tareas/semana-1-pistas.md`), marcadas como sin verificar. Salieron de una simulación de la tarea hecha con búsqueda web, sin abrir las normas en el Régimen Legal.
+- **La verificación anti-robots del Régimen Legal no se salta:** las normas se abren y se guardan a mano.
