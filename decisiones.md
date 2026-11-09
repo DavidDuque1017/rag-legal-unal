@@ -58,5 +58,6 @@
 - **Tareas independientes:** cada persona recorre el camino completo (pregunta, norma y texto guardado) y los frentes se diseñan para que nadie espere a otro. Parte 1 el miércoles y parte 2 el viernes.
 - **Un archivo por norma** en `datos/normas/`, con ficha (norma, órgano, enlace, vigencia, normas que la modifican y normas relacionadas). Evita conflictos de Git y permite subir desde la web de GitHub.
 - **La vigencia no es de sí o no:** la ficha admite «parcial» y separa las normas que modifican de las que reglamentan, delegan o exceptúan.
-- **Pistas por pregunta para todos** (`tareas/semana-1-pistas.md`), marcadas como sin verificar. Salieron de una simulación de la tarea hecha con búsqueda web, sin abrir las normas en el Régimen Legal.
+- **Más exigencia y menos receta (lo decidió Nicolás):** las guías dicen qué lograr y en qué formato, no cómo. Cada frente es una pregunta que su responsable defiende el viernes en 5 minutos. En la semana 1 cada uno trae 5 preguntas nuevas, responde 3 y aporta un recurso a `recursos.md`.
+- **Pistas por pregunta fuera de la guía:** existen (salieron de una simulación de la tarea con búsqueda web, sin abrir las normas en el Régimen Legal), pero las guarda Nicolás como salvavidas para quien se trabe. Encontrar la norma es parte de lo que se aprende.
 - **La verificación anti-robots del Régimen Legal no se salta:** las normas se abren y se guardan a mano.
