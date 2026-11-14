@@ -329,7 +329,7 @@ footer p+p{margin-top:var(--e2)}
 <div class="grano" aria-hidden="true"></div>
 
 <nav class="barra" aria-label="Secciones">
-  <a href="#tarea">Tarea</a><a href="#reunion">Reunión</a><a href="#centro">Enlaces</a><a href="#semanas">Semanas</a>
+  <a href="#tarea">Tarea</a><a href="#reunion">Reunión</a><a href="#centro">Enlaces</a><a href="#semanas">Sprints</a>
 </nav>
 <header class="cielo">
   <div class="velocidad" aria-hidden="true"></div>
@@ -353,7 +353,7 @@ footer p+p{margin-top:var(--e2)}
     </h1>
     <p class="lead">Vamos a construir un sistema al que le preguntes por la normativa de la UNAL y te responda <strong>citando la norma exacta</strong>, no inventándose la respuesta.</p>
     <div class="acciones">
-      <a class="boton" href="#tarea">Tarea: 3 pasos, unos 15 minutos</a>
+      <a class="boton" href="#tarea">Ver la tarea del sprint</a>
       <a class="enlace-sec" href="https://github.com/Mr-Percival/rag-legal-unal">Ver el repositorio ↗</a>
     </div>
   </div>
@@ -383,52 +383,38 @@ footer p+p{margin-top:var(--e2)}
 
   <section id="tarea" aria-labelledby="titulo-tarea">
     <div class="envoltura convocatoria">
-      <span class="sello">Convocatoria de arranque · 31 oct 2026</span>
+      <span class="sello" id="sprint-sello">Sprint 1 · 13 al 20 de noviembre</span>
       <div class="tarea revelar">
-        <h2 id="titulo-tarea">Tarea antes de la reunión</h2>
-        <ol>
-          <li>Marcar en el <a href="https://www.when2meet.com/?39606729-rn6Ir" target="_blank" rel="noopener">When2meet</a> cuándo pueden reunirse. Es lo más urgente: con eso escogemos el horario. Toma 1 minuto. <strong>Hasta el lunes 2 de noviembre a las 8 p. m.</strong></li>
-          <li>Ver <a href="https://www.youtube.com/watch?v=T-D1OfcDW1M" target="_blank" rel="noopener">What is RAG?, de IBM</a>. Son 6 minutos; si el inglés les cuesta, activen los subtítulos en español (⚙ → Subtítulos → Traducir automáticamente).</li>
-          <li>Dejar en GitHub una pregunta real sobre la normativa de la UNAL que les gustaría que el sistema respondiera. <strong>Antes de la reunión.</strong>
-            <div class="versus">
-              <div class="si"><b>Sirve</b><q>¿Cuántas veces puedo cancelar una asignatura?</q><small>Es concreta y la respuesta está en una norma.</small></div>
-              <div class="no"><b>No sirve</b><q>¿Qué es el estatuto?</q><small>Es muy general; no hay un artículo que la responda.</small></div>
-            </div>
-            <div class="ej-issue" aria-label="Ejemplo de cómo llenar el formulario en GitHub">
-              <span class="ej-tit">Así se ve en GitHub</span>
-              <span class="ej-campo">Título</span>
-              <span class="ej-valor">¿Cuántas veces puedo cancelar una asignatura?</span>
-              <span class="ej-campo">¿En qué situación te surgió? <i>(opcional)</i></span>
-              <span class="ej-valor tenue-ej">Quería cancelar Cálculo y no sabía si me afectaba el promedio.</span>
-              <span class="ej-campo">Tema <i>(opcional)</i></span>
-              <span class="ej-valor tenue-ej">Matrícula y cancelaciones</span>
-              <span class="ej-pie">Luego, el botón verde para crearla</span>
-            </div>
-            <p class="nota-cuenta">¿Sin cuenta de GitHub? Es gratis y toma 5 minutos: <a href="https://github.com/signup" target="_blank" rel="noopener">crear cuenta</a> · <a href="https://www.youtube.com/results?search_query=c%C3%B3mo+crear+una+cuenta+de+GitHub+paso+a+paso" target="_blank" rel="noopener">video paso a paso</a>. Escojan un usuario que les guste mostrar: ese perfil termina siendo su portafolio.</p></li>
+        <h2 id="titulo-tarea">Tarea de este sprint</h2>
+        <p id="sprint-objetivo">Una pregunta entra, sale una respuesta con el artículo citado y sabemos cuántas acierta. Sobre una sola norma: el Estatuto Estudiantil.</p>
+        <ol id="sprint-reparto">
+          <li><strong>David:</strong> partidor. Divide el Estatuto en un chunk por artículo o parágrafo y anota qué norma lo modificó o derogó. Está hecho cuando una prueba reconstruye la norma desde los chunks sin perder ni duplicar texto.</li>
+          <li><strong>Kelineth:</strong> búsqueda por palabras (BM25). Recibe una pregunta y devuelve los 5 artículos más relevantes. Está hecho cuando supera al buscador de referencia (27,6 %) y compara dos formas de preparar el texto.</li>
+          <li><strong>Juan Diego:</strong> búsqueda por significado (embeddings). Recibe una pregunta y devuelve los 5 artículos más cercanos en significado. Está hecho cuando supera al buscador de referencia y compara dos modelos de embeddings.</li>
+          <li><strong>Gustavo:</strong> respuesta con cita. Con los artículos encontrados redacta la respuesta con el fragmento literal, y dice «no encontré sustento» cuando no lo hay. Está hecho cuando reporta cuántas citas pasan la comprobación por código y cuántas abstenciones son correctas.</li>
+          <li><strong>Nicolás:</strong> medición y ensamble. Une las piezas y deja un comando que imprime los números de todos.</li>
         </ol>
-        <p class="por-que">Eso es todo. Con esas preguntas armamos el conjunto de prueba: cuando el RAG empiece a responder, las usamos para medir si acierta.</p>
-        <a class="boton" href="https://github.com/Mr-Percival/rag-legal-unal/issues/new?template=pregunta.yml" target="_blank" rel="noopener">Dejar mi pregunta</a>
+        <p class="por-que" id="sprint-entrega">Entrega el viernes 20 antes de las 8 p. m.: el código en main y una demostración de 5 minutos con el número obtenido.</p>
+        <a class="boton" id="sprint-guia" href="https://github.com/Mr-Percival/rag-legal-unal/blob/main/tareas/semana-1.md" target="_blank" rel="noopener">Abrir la guía del sprint</a>
       </div>
 
       <div class="reunion revelar" id="reunion">
         <div>
-          <h3>Reunión de arranque</h3>
+          <h3>Reuniones</h3>
           <dl class="datos">
-            <dt>Modo</dt><dd>Virtual (estamos en paro)</dd>
-            <dt>Cuándo</dt><dd id="dato-cuando">Entre el martes 3 y el viernes 6 de noviembre. Marquen en el When2meet cuándo pueden (hasta el lunes 2 a las 8 p. m.) y escogemos el horario donde quepa la mayoría. Lo anunciamos por el grupo de WhatsApp y aquí, en Novedades.</dd>
-            <dt>Duración</dt><dd>45 a 60 minutos</dd>
+            <dt>Cuándo</dt><dd id="dato-cuando">Todos los viernes a las 8 p. m.</dd>
+            <dt>Modo</dt><dd>Virtual</dd>
+            <dt>Qué se hace</dt><dd>Cada uno muestra su pieza corriendo en 5 minutos, con su número.</dd>
             <dt>Enlace</dt><dd>Llega por el grupo de WhatsApp</dd>
           </dl>
-          <a class="boton boton-cian" href="https://www.when2meet.com/?39606729-rn6Ir" target="_blank" rel="noopener">Marcar mi disponibilidad</a>
         </div>
         <div>
-          <h3>Agenda</h3>
+          <h3>Cómo trabajamos</h3>
           <ol class="agenda">
-            <li>Qué vamos a construir y hasta dónde llega la primera versión.</li>
-            <li>De dónde sacamos los documentos y cómo los vamos a procesar.</li>
-            <li>Con qué herramientas lo vamos a hacer.</li>
-            <li>Cómo nos repartimos el trabajo: rotamos por todas las partes (datos, búsqueda, modelo, evaluación) para que todos aprendan el RAG completo.</li>
-            <li>Cómo vamos a trabajar: reuniones, repositorio y tareas.</li>
+            <li>Un componente por persona, con entrada y salida fijas: nadie espera a nadie.</li>
+            <li>Una sola fecha por sprint: el viernes.</li>
+            <li>Todo cambio se mide contra el examen; una mejora que no sube el número no entra.</li>
+            <li>Rotamos por datos, búsqueda, modelo y evaluación para aprender el RAG completo.</li>
           </ol>
         </div>
       </div>
@@ -441,20 +427,20 @@ footer p+p{margin-top:var(--e2)}
       <p class="angosto tenue">Guarden esta página: aquí va a estar todo lo del proyecto a medida que avance.</p>
       <ul class="centro">
         <li><a href="https://github.com/Mr-Percival/rag-legal-unal" target="_blank" rel="noopener" style="--c:var(--cian)"><b>Repositorio</b><small>el código y la documentación</small><span class="flecha">↗</span></a></li>
-        <li><a href="https://github.com/Mr-Percival/rag-legal-unal/issues?q=label%3Apregunta" target="_blank" rel="noopener" style="--c:var(--amarillo)"><b>Preguntas del grupo</b><small>lo que todos quieren que el RAG responda</small><span class="flecha">↗</span></a></li>
-        <li><a href="https://www.when2meet.com/?39606729-rn6Ir" target="_blank" rel="noopener" style="--c:var(--rosa)"><b>Disponibilidad</b><small>When2meet de la reunión de arranque</small><span class="flecha">↗</span></a></li>
+        <li><a href="https://github.com/Mr-Percival/rag-legal-unal/issues?q=label%3Apregunta" target="_blank" rel="noopener" style="--c:var(--amarillo)"><b>Preguntas del grupo</b><small>las preguntas reales que dejaron los integrantes</small><span class="flecha">↗</span></a></li>
+        <li><a href="https://github.com/Mr-Percival/rag-legal-unal/tree/main/tareas" target="_blank" rel="noopener" style="--c:var(--rosa)"><b>Guías</b><small>la tarea de cada sprint</small><span class="flecha">↗</span></a></li>
       </ul>
       <h3 class="sub" id="novedades">Novedades</h3>
       <ol class="novedades" id="lista-novedades">
-        <li><time datetime="2026-10-31">31 oct 2026</time> Arranca el proyecto. Está abierta la tarea de arranque y el When2meet para escoger el horario de la primera reunión.</li>
+        <li><time datetime="2026-11-13">13 nov 2026</time> Arrancamos el sprint 1: un RAG mínimo de punta a punta sobre el Estatuto Estudiantil.</li>
       </ol>
     </div>
   </section>
 
   <section id="semanas" aria-labelledby="titulo-semanas">
     <div class="envoltura">
-      <h2 id="titulo-semanas">Semana a semana</h2>
-      <p class="angosto tenue">Aquí va quedando lo de cada semana: el objetivo, las tareas, los materiales, la grabación y el acta.</p>
+      <h2 id="titulo-semanas">Sprint a sprint</h2>
+      <p class="angosto tenue">Aquí va quedando lo de cada sprint: el objetivo, las tareas, los materiales, la grabación y el acta.</p>
       <ol class="semanas" id="lista-semanas"></ol>
     </div>
   </section>
@@ -741,7 +727,15 @@ footer p+p{margin-top:var(--e2)}
     }
     var r=d.reunion||{};
     if(r.cuando) document.getElementById('dato-cuando').textContent=r.cuando;
-    var etiquetas={actual:'Esta semana',hecha:'Hecha',proxima:'Próxima'};
+    var act=(d.semanas||[]).filter(function(w){ return w.estado==='actual'; })[0];
+    if(act){
+      document.getElementById('sprint-sello').textContent='Sprint '+act.numero+(act.fechas?' · '+act.fechas:'');
+      if(act.objetivo) document.getElementById('sprint-objetivo').textContent=act.objetivo;
+      if(act.reparto&&act.reparto.length) document.getElementById('sprint-reparto').innerHTML=act.reparto.map(function(x){ return '<li><strong>'+esc(x.quien)+':</strong> '+esc(x.que)+'</li>'; }).join('');
+      if(act.entrega) document.getElementById('sprint-entrega').textContent=act.entrega;
+      if(act.guia) document.getElementById('sprint-guia').href=act.guia;
+    }
+    var etiquetas={actual:'En curso',hecha:'Hecha',proxima:'Próxima'};
     document.getElementById('lista-semanas').innerHTML=(d.semanas||[]).map(function(w){
       var h='<li class="semana" data-estado="'+esc(w.estado)+'"><span class="num">S'+esc(w.numero)+'</span>';
       h+='<h3>'+esc(w.titulo)+'</h3><p class="meta"><span class="chip">'+(etiquetas[w.estado]||esc(w.estado))+'</span>'+(w.fechas?esc(w.fechas):'')+'</p>';

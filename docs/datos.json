@@ -1,8 +1,7 @@
 {
-  "_como_actualizar": "Este archivo alimenta la página. Para una novedad, agregar un objeto AL PRINCIPIO de 'novedades'. Para una semana nueva, agregar un objeto a 'semanas' y poner 'estado': 'actual' (la anterior pasa a 'hecha'). Los campos con null no se muestran. El enlace de la reunión se manda por el grupo de WhatsApp, no va aquí.",
+  "_como_actualizar": "Este archivo alimenta la página. Para una novedad, agregar un objeto AL PRINCIPIO de 'novedades'. Para un sprint nuevo, poner 'estado': 'actual' en el que empieza (el anterior pasa a 'hecha') y llenar 'reparto', 'entrega' y 'guia': con eso se actualiza sola la sección de tarea. Los campos con null no se muestran. El enlace de la reunión se manda por el grupo de WhatsApp, no va aquí.",
   "reunion": {
-    "cuando": null,
-    "when2meet": "https://www.when2meet.com/?39606729-rn6Ir"
+    "cuando": "Todos los viernes a las 8 p. m."
   },
   "novedades": [
     {
@@ -63,7 +62,31 @@
         }
       ],
       "grabacion": null,
-      "acta": null
+      "acta": null,
+      "reparto": [
+        {
+          "quien": "David",
+          "que": "partidor. Divide el Estatuto en un chunk por artículo o parágrafo y anota qué norma lo modificó o derogó. Está hecho cuando una prueba reconstruye la norma desde los chunks sin perder ni duplicar texto."
+        },
+        {
+          "quien": "Kelineth",
+          "que": "búsqueda por palabras (BM25). Recibe una pregunta y devuelve los 5 artículos más relevantes. Está hecho cuando supera al buscador de referencia (27,6 %) y compara dos formas de preparar el texto."
+        },
+        {
+          "quien": "Juan Diego",
+          "que": "búsqueda por significado (embeddings). Recibe una pregunta y devuelve los 5 artículos más cercanos en significado. Está hecho cuando supera al buscador de referencia y compara dos modelos de embeddings."
+        },
+        {
+          "quien": "Gustavo",
+          "que": "respuesta con cita. Con los artículos encontrados redacta la respuesta con el fragmento literal, y dice «no encontré sustento» cuando no lo hay. Está hecho cuando reporta cuántas citas pasan la comprobación por código y cuántas abstenciones son correctas."
+        },
+        {
+          "quien": "Nicolás",
+          "que": "medición y ensamble. Une las piezas y deja un comando que imprime los números de todos."
+        }
+      ],
+      "entrega": "Entrega el viernes 20 antes de las 8 p. m.: el código en main y una demostración de 5 minutos con el número obtenido.",
+      "guia": "https://github.com/Mr-Percival/rag-legal-unal/blob/main/tareas/semana-1.md"
     },
     {
       "numero": 2,
