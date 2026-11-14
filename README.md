@@ -26,7 +26,7 @@ Eso es todo. La ruta de aprendizaje opcional, por nivel, está en la [página de
 
 ## Estado
 
-Semana 1 (6 al 13 de noviembre): armamos la base de normas y el conjunto de prueba. La guía está en [tareas/semana-1.md](tareas/semana-1.md). Nos reunimos los viernes a las 8 p. m. y la meta es tener la primera versión en la segunda semana de diciembre. La idea es que todos pasemos por todas las partes del RAG para aprenderlo completo.
+Sprint 1 (13 al 20 de noviembre): construimos un RAG mínimo de punta a punta sobre el Estatuto Estudiantil, con un componente por persona. La guía está en [tareas/semana-1.md](tareas/semana-1.md). Para medir un buscador: `python evaluar.py rag.buscar_simple`. Nos reunimos los viernes a las 8 p. m. y la meta es tener la primera versión el 11 de diciembre. Todos rotamos por datos, búsqueda, modelo y evaluación para aprender el RAG completo.
 
 ## Equipo
 

@@ -6,8 +6,12 @@
   },
   "novedades": [
     {
+      "fecha": "2026-11-13",
+      "texto": "Arrancamos el sprint 1: un RAG mínimo de punta a punta sobre el Estatuto Estudiantil, con un componente por persona. Entrega el viernes 20."
+    },
+    {
       "fecha": "2026-11-06",
-      "texto": "Hicimos la reunión de arranque. Ya está la tarea de la semana 1 y el plan para tener la primera versión en la segunda semana de diciembre."
+      "texto": "Hicimos la reunión de arranque y acordamos tener la primera versión en la segunda semana de diciembre."
     },
     {
       "fecha": "2026-10-31",
@@ -18,13 +22,12 @@
     {
       "numero": 0,
       "titulo": "Arranque",
-      "fechas": "3 al 6 de noviembre",
+      "fechas": "3 al 13 de noviembre",
       "estado": "hecha",
       "objetivo": "Conocernos, entender qué es un RAG y definir el alcance de la primera versión.",
       "tareas": [
-        "Marcar disponibilidad en el When2meet (1 min), hasta el lunes 2 de noviembre a las 8 p. m.",
         "Ver el video de IBM sobre RAG (6 min).",
-        "Dejar una pregunta real sobre la normativa en GitHub, antes de la reunión."
+        "Dejar una pregunta real sobre la normativa en GitHub."
       ],
       "materiales": [
         {
@@ -37,18 +40,17 @@
     },
     {
       "numero": 1,
-      "titulo": "Normas y conjunto de prueba",
-      "fechas": "6 al 13 de noviembre",
+      "titulo": "RAG mínimo de punta a punta",
+      "fechas": "13 al 20 de noviembre",
       "estado": "actual",
-      "objetivo": "Tener los textos de las normas y las respuestas verificadas con las que vamos a calificar al RAG.",
+      "objetivo": "Una pregunta entra, sale una respuesta con el artículo citado y sabemos cuántas acierta. Sobre una sola norma: el Estatuto Estudiantil.",
       "tareas": [
-        "Todos, hasta el miércoles 11: traer 5 preguntas nuevas de compañeros, responder 3 con su norma, artículo y fragmento literal, y guardar el texto de esas normas.",
-        "Tu frente, hasta el viernes 13 antes de la reunión: una pregunta que defiendes ante el grupo en 5 minutos.",
-        "Todos: agregar un recurso a recursos.md y contarlo el viernes."
+        "Cada uno construye un componente: partidor, búsqueda BM25, búsqueda por embeddings, respuesta con cita, o examen y ensamble.",
+        "Entrega el viernes 20 antes de las 8 p. m.: el código en main y una demostración de 5 minutos con el número obtenido."
       ],
       "materiales": [
         {
-          "titulo": "Guía completa de la semana 1",
+          "titulo": "Guía del sprint 1, con los contratos de cada componente",
           "url": "https://github.com/Mr-Percival/rag-legal-unal/blob/main/tareas/semana-1.md"
         },
         {
@@ -65,10 +67,10 @@
     },
     {
       "numero": 2,
-      "titulo": "Normas limpias y partidas",
-      "fechas": "14 al 20 de noviembre",
+      "titulo": "Corpus completo y experimentos",
+      "fechas": "20 al 27 de noviembre",
       "estado": "proxima",
-      "objetivo": "Dejar las normas limpias y partidas por artículo y parágrafo, sin perder de dónde salió cada pedazo.",
+      "objetivo": "Ampliar a todas las normas de pregrado, llevar el examen a 30 preguntas y medir cada mejora contra una línea base.",
       "tareas": [],
       "materiales": [],
       "grabacion": null,
@@ -76,10 +78,10 @@
     },
     {
       "numero": 3,
-      "titulo": "Búsqueda",
-      "fechas": "21 al 27 de noviembre",
+      "titulo": "Prototipo con usuarios",
+      "fechas": "27 de noviembre al 4 de diciembre",
       "estado": "proxima",
-      "objetivo": "Encontrar el artículo correcto para cada pregunta y medirlo con el conjunto de prueba.",
+      "objetivo": "Desplegar la interfaz, probarla con estudiantes reales y encontrar las causas que más fallos explican.",
       "tareas": [],
       "materiales": [],
       "grabacion": null,
@@ -87,21 +89,10 @@
     },
     {
       "numero": 4,
-      "titulo": "Respuestas con cita",
-      "fechas": "28 de noviembre al 4 de diciembre",
+      "titulo": "Cierre y demo",
+      "fechas": "4 al 11 de diciembre",
       "estado": "proxima",
-      "objetivo": "Conectar el modelo para que responda citando la norma exacta y diga cuándo no encontró sustento.",
-      "tareas": [],
-      "materiales": [],
-      "grabacion": null,
-      "acta": null
-    },
-    {
-      "numero": 5,
-      "titulo": "Interfaz y demo",
-      "fechas": "5 al 13 de diciembre",
-      "estado": "proxima",
-      "objetivo": "Tener una interfaz simple, los últimos ajustes y la demo de la primera versión.",
+      "objetivo": "Corregir los fallos principales, hacer la medición final y presentar la primera versión.",
       "tareas": [],
       "materiales": [],
       "grabacion": null,

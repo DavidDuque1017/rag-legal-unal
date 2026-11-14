@@ -61,3 +61,13 @@
 - **Más exigencia y menos receta (lo decidió Nicolás):** las guías dicen qué lograr y en qué formato, no cómo. Cada frente es una pregunta que su responsable defiende el viernes en 5 minutos. En la semana 1 cada uno trae 5 preguntas nuevas, responde 3 y aporta un recurso a `recursos.md`.
 - **Pistas por pregunta fuera de la guía:** existen (salieron de una simulación de la tarea con búsqueda web, sin abrir las normas en el Régimen Legal), pero las guarda Nicolás como salvavidas para quien se trabe. Encontrar la norma es parte de lo que se aprende.
 - **La verificación anti-robots del Régimen Legal no se salta:** las normas se abren y se guardan a mano.
+
+## 2026-11-13 · Cambio de enfoque: sprints técnicos
+
+- **La tarea de la semana del 6 al 13 no se envió.** A Nicolás no lo convencieron ni el estilo de los documentos ni el enfoque: recoger preguntas y normas durante una semana era ir demasiado despacio para un grupo en el que todos programan.
+- **Primero angosto y completo:** el sprint 1 (13 al 20-11) construye el RAG entero sobre una sola norma, el Estatuto Estudiantil, con las 8 preguntas que ya existen. El corpus y el examen se amplían desde el sprint 2.
+- **Un componente por persona, con contrato** (formatos de `chunks.jsonl` y `preguntas.jsonl`, y las funciones `buscar` y `responder`). Un archivo de ejemplo permite trabajar sin esperar al partidor.
+- **Una sola fecha por sprint:** el viernes a las 8 p. m., con el código en `main` y una demostración de 5 minutos. No hay entregas intermedias.
+- **Cuatro sprints hasta la demo del 11-12:** RAG mínimo, corpus completo y experimentos, prototipo con usuarios, y cierre. Todos rotan por datos, búsqueda, modelo y evaluación.
+- **Las preguntas dejan de ser una tarea aparte:** el examen crece con los casos que hagan fallar cada pieza.
+- **Documentos:** la guía del sprint en `tareas/` es el único documento obligatorio. Los PDF personalizados y el documento de apoyo de la semana 1 quedaron en local, sin enviar. El libro guía es *AI Engineering*, de Chip Huyen, en inglés.

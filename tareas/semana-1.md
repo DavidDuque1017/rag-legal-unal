@@ -1,98 +1,64 @@
-# Semana 1: normas y conjunto de prueba
+# Sprint 1 (13 al 20 de noviembre)
 
-**Entrega:** parte 1, miércoles 11 de noviembre; parte 2, viernes 13 de noviembre antes de la reunión (8 p. m.).
+- **Meta:** una pregunta entra, sale una respuesta con el artículo citado, y medimos cuántas acierta.
+- **Corpus:** solo el Estatuto Estudiantil, en `datos/normas/acuerdo-008-2008-csu.md`.
+- **Examen:** `datos/preguntas.jsonl`.
+- **Entrega:** viernes 20, 8 p. m. Código en `main` por *pull request* y demostración de 5 minutos con tu número.
 
-**Para qué:** antes de escribir el RAG necesitamos dos cosas: los textos de las normas y una forma de saber si el sistema acierta. Es como armar el examen con su solucionario antes de que el estudiante lo presente. El viernes 13 cerramos la parte de datos y empezamos con el resto del RAG.
+## Tu tarea
 
-Esta guía dice qué hay que lograr y en qué formato se entrega. El cómo lo decide cada uno: buscar, equivocarse y encontrar el camino es parte del trabajo. Nadie tiene que esperar a otro para empezar.
+| Quién | Qué construyes | Archivo | Hecho cuando | Lectura (Huyen) |
+|---|---|---|---|---|
+| David | Partidor: un chunk por artículo o parágrafo, con la norma que lo modificó o derogó | `rag/partir.py` → `datos/chunks.jsonl` | Una prueba reconstruye la norma desde los chunks sin perder ni duplicar texto | Cap. 6, pp. 267-273 |
+| Kelineth | Búsqueda por palabras (BM25) | `rag/buscar_bm25.py` | Supera en `recall@5` a `rag.buscar_simple` y compara al menos dos formas de preparar el texto | Cap. 6, pp. 257-267 |
+| Juan Diego | Búsqueda por significado (embeddings) | `rag/buscar_denso.py` | Supera en `recall@5` a `rag.buscar_simple` y compara al menos dos modelos de embeddings | Cap. 6, pp. 257-267; cap. 3, pp. 134-136 |
+| Gustavo | Respuesta con cita literal y abstención | `rag/responder.py`, `rag/verificar_cita.py` | Reporta el porcentaje de citas que pasan la comprobación por código y el de abstenciones correctas | Cap. 5, pp. 220-235; cap. 2, pp. 99-105 |
+| Nicolás | Medición de las respuestas y ensamble | `evaluar.py`, `rag/pipeline.py` | Un comando imprime los números de todos | Cap. 4, pp. 200-208 |
 
-## Alcance de la primera versión
+Todos: cap. 6, pp. 253-257 (qué es un RAG y cómo se arma).
 
-- **Qué entra:** las normas de pregrado publicadas en el [Régimen Legal](https://legal.unal.edu.co/rlunal/home/) (acuerdos, resoluciones y las circulares que una norma cite) y el calendario académico de la sede Medellín, porque varios plazos dependen de él.
-- **Qué no entra como fuente:** guías de facultad, cartillas y copias en otros sitios. Sirven de pista para encontrar la norma, pero la respuesta y el texto salen de las fuentes de arriba.
-- **Cuando la respuesta depende de la sede o la facultad:** se responde para la sede Medellín y se anota que depende.
+## Para empezar hoy
 
-## Parte 1 (todos, hasta el miércoles 11)
+- **Chunks:** mientras no exista `datos/chunks.jsonl`, `rag.datos.cargar_chunks()` entrega `datos/ejemplo/chunks.jsonl`, con los 62 artículos partidos de forma simple.
+- **Medición:** `python evaluar.py rag.buscar_simple` imprime `recall@5` y MRR; con `--fallos` lista las preguntas que no acertó. Cambia el nombre del módulo por el tuyo.
+- **Piso:** `rag/buscar_simple.py` cuenta palabras en común. Es el número que hay que superar.
+- **Gustavo:** `responder` recibe el buscador como parámetro y usa `rag.buscar_simple` por defecto, así no depende de las búsquedas de los demás.
 
-### 1. Trae 5 preguntas nuevas
+## Contratos
 
-Pregúntales a compañeros de verdad qué dudas tienen sobre la normativa y crea cada una como [pregunta del proyecto](https://github.com/Mr-Percival/rag-legal-unal/issues/new?template=pregunta.yml). Mientras más se parezcan a como habla un estudiante, mejor. Con 25 preguntas nuevas pasamos de 8 a más de 30.
+`datos/chunks.jsonl`, una línea por chunk:
 
-### 2. Responde 3 preguntas que no hayas escrito tú
-
-Escógelas en la [lista de preguntas](https://github.com/Mr-Percival/rag-legal-unal/issues?q=is%3Aissue+label%3Apregunta) y comenta `Yo la tomo` para que nadie repita. Luego responde en el mismo issue con este formato:
-
-```text
-Respuesta: lo que diría una persona que conoce la norma, en 1 a 3 frases.
-Norma: tipo, número, año y órgano. Ejemplo: Acuerdo 000 de 0000 del CSU.
-Artículo: el artículo y el parágrafo exactos.
-Texto: copia aquí el fragmento literal que lo sustenta.
-Enlace: la dirección de la norma en el Régimen Legal.
-Vigencia: ¿alguna norma posterior la modificó? Di cuál o escribe "no encontré".
+```json
+{"id": "acuerdo-008-2008-csu#art-12", "norma": "Acuerdo 008 de 2008 del CSU", "articulo": "Artículo 12", "jerarquia": "Capítulo II > Artículo 12", "texto": "...", "enlace": "...", "vigente": "sí", "modificado_por": []}
 ```
 
-Si la norma no resuelve la pregunta, no fija lo que se pregunta o dos normas se contradicen, eso es lo que se escribe. «La norma no lo fija; lo que dice es esto» es una respuesta válida, y esos casos son valiosos: el sistema debe aprender a decir «no encontré sustento».
+El `id` de un parágrafo empieza por el de su artículo: `acuerdo-008-2008-csu#art-12-par-1`.
 
-No copies la respuesta de un chatbot. Esta es la referencia con la que vamos a calificar al RAG, así que tiene que salir de la norma.
+`datos/preguntas.jsonl`, una línea por pregunta:
 
-### 3. Guarda el texto completo de cada norma que citaste
-
-Un archivo por norma en `datos/normas/`, con el nombre en minúsculas y con guiones: `acuerdo-000-0000-csu.md`. Si el archivo ya existe, otra persona ya la guardó. El archivo empieza con esta ficha y sigue con el texto de la norma, copiado tal cual, con sus notas:
-
-```text
----
-norma: Acuerdo 000 de 0000
-organo: Consejo Superior Universitario
-tema: de qué trata, en una línea
-enlace: la dirección en el Régimen Legal
-vigente: sí, parcial, no o no sé
-modificada_por: las normas que le cambian o le quitan texto, o "no encontré"
-relacionadas: las normas que la reglamentan, delegan o le hacen excepciones
-formato_origen: HTML, PDF con texto o PDF escaneado
-guardada_por: tu usuario de GitHub
----
+```json
+{"id": "s001", "pregunta": "...", "ids_correctos": ["acuerdo-008-2008-csu#art-12"], "respuesta_referencia": "...", "tiene_sustento": true}
 ```
 
-Sin Git también se puede: en GitHub, entra a `datos/normas/`, botón **Add file → Create new file**, pega el contenido y confirma.
+Funciones:
 
-El Régimen Legal no tiene una casilla de «vigente»: las notas van dentro del texto de la norma, y no todas significan lo mismo.
+```python
+def buscar(pregunta: str, k: int = 5) -> list[dict]:
+    # [{"id": ..., "puntaje": ..., "texto": ...}], del más al menos relevante
 
-| Nota | Qué significa | Dónde va en la ficha |
-|---|---|---|
-| Deroga | Le quita validez a la norma o al artículo | `modificada_por`; `vigente: no` o `parcial` |
-| Modifica | Le cambia el texto | `modificada_por` |
-| Reglamenta | Detalla cómo se aplica, sin cambiarla | `relacionadas` |
-| Delega | Le pasa a otro órgano la decisión | `relacionadas` |
-| Exceptúa | Suspende un artículo para un caso o un periodo | `relacionadas` |
+def responder(pregunta: str, buscar=buscar_simple) -> dict:
+    # {"respuesta": str, "ids_citados": [str], "cita_literal": str, "sin_sustento": bool}
+```
 
-**El sitio tiene verificación anti-robots: no la saltes.** Las normas se abren y se guardan a mano.
+Una búsqueda acierta si alguno de los `k` resultados es un artículo correcto o uno de sus parágrafos.
 
-## Parte 2 (tu frente, hasta el viernes 13)
+## Reglas
 
-Cada frente es una pregunta que su responsable le contesta al grupo el viernes, en 5 minutos: qué encontró, cómo lo sabe y qué no funcionó.
-
-| Frente | Responsable | La pregunta que defiende |
-|---|---|---|
-| Mapa y vigencia | Kelineth | ¿Qué normas necesita la primera versión y cuáles siguen vigentes? |
-| Estatuto Estudiantil | David | ¿Qué dice hoy el Estatuto y en qué se diferencia de lo que se aprobó en 2008? |
-| Normas faltantes | Gustavo | ¿Qué nos falta para responder las preguntas, y hay una fuente mejor que el Régimen Legal? |
-| Cómo vamos a calificar | Juan Diego | ¿Cómo sabemos que el sistema acertó? |
-| Formatos y extracción | Nicolás | ¿Se pueden separar los artículos de forma automática sin dañar el texto? |
-
-**Mapa y vigencia (Kelineth).** Entregable: `datos/normas.csv` con nombre, enlace, tema, vigente, modificada por, relacionadas y si ya está guardada. Tiene que quedar claro con qué criterio una norma entra o se queda por fuera.
-
-**Estatuto Estudiantil (David).** Entregable: el Acuerdo 008 de 2008 del CSU completo en `datos/normas/`, a más tardar el martes 10 en la noche, porque muchas preguntas pasan por él. Y la lista de los artículos que han cambiado desde 2008, con la norma que los cambió.
-
-**Normas faltantes (Gustavo).** Entregable: guardadas las normas que respondan preguntas que nadie tomó, las que el mapa marque como faltantes y el calendario académico vigente de la sede Medellín. Y una nota corta con las fuentes oficiales que revisaste y qué tan confiables son.
-
-**Cómo vamos a calificar (Juan Diego).** Entregable: un issue de menos de una página con la propuesta para medir tres cosas (si encontró el artículo correcto, si la respuesta es fiel a ese artículo y qué hace cuando la norma no responde) y un ejemplo calificado a mano con una de tus preguntas.
-
-**Formatos y extracción (Nicolás).** Entregable: una prueba con 3 normas de formatos distintos en `exploracion/` y una nota con lo que funcionó y lo que no. Nicolás también mantiene el repositorio.
-
-## Parte 3 (todos): un recurso para el grupo
-
-Cada uno agrega a [`recursos.md`](../recursos.md) un recurso que haya encontrado sobre su frente (un artículo, un video, un repositorio, un proyecto parecido), con tres líneas: qué es, por qué sirve y para qué parte del proyecto. El viernes lo cuenta en un minuto. La idea es que el material del proyecto lo armemos entre todos.
+- La herramienta y el método los escoges y los defiendes tú.
+- Todo *pull request* lleva al menos una prueba.
+- Las llaves de los modelos no se suben.
+- Si una pregunta hace fallar tu pieza, agrégala al examen.
 
 ## Si te trabas
 
-Dale primero 20 minutos por tu cuenta. Si sigues trabado, pregunta por el grupo de WhatsApp: es mejor preguntar el martes que llegar sin nada el viernes.
+Veinte minutos por tu cuenta; después, al grupo de WhatsApp.
